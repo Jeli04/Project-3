@@ -11,7 +11,8 @@
         android:theme="@style/Theme.Project3">
 
         <activity android:name=".Introduction"
-            android:label="start"/>
+            android:label="start">
+        </activity>
 
         <activity
             android:name=".MainActivity"
