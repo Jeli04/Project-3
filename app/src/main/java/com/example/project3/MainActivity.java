@@ -1,17 +1,23 @@
 package com.example.project3;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.Image;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     int questionCount = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button next = findViewById(R.id.nextQuestion);
+        RadioGroup choices = findViewById(R.id.answerChoices);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,8 +37,10 @@ public class MainActivity extends AppCompatActivity {
 
                 if(questionCount == 10){
                     next.setText("Submit");
+                    setContentView(R.layout.introduction);
                 }
                 updateQuestion();
+                choices.clearCheck();
 
             }
         });
@@ -106,4 +115,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Sets up the menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.mymenu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.home:
+                setContentView(R.layout.activity_main);
+                break;
+            case R.id.main:
+                setContentView(R.layout.end);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

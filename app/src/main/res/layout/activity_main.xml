@@ -34,8 +34,9 @@
                 tools:srcCompat="@drawable/project_3_quiz_q1" />
 
             <RadioGroup
+                android:id="@+id/answerChoices"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" >
+                android:layout_height="200dp">
 
                 <RadioButton
                     android:id="@+id/choice1"
