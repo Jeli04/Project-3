@@ -12,15 +12,24 @@ public class Introduction extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.introduction);
+        setContentView(R.layout.activity_introduction);
 
         Button start = findViewById(R.id.start);
-
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Introduction.this, MainActivity.class);
-                startActivity(intent);
+                configureNextButton();
+            }
+        });
+    }
+
+    private void configureNextButton(){
+        Button nextButton = findViewById(R.id.start);
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Introduction.this, MainActivity.class));
             }
         });
     }
