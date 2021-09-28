@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
     int questionCount = 1;
     int totalCorrect = 0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button next = findViewById(R.id.nextQuestion);
         RadioGroup choices = findViewById(R.id.choices);
+
+        TextView currentScore = findViewById(R.id.currentScore);    // test text
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,9 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
                 updateQuestion();
                 choices.clearCheck();
+                currentScore.setText("Current Score: " + totalCorrect*10 + "%");
 
+                Intent sendScore = new Intent(getApplicationContext(), Finish.class);
                 if(questionCount == 10){
                     next.setText("Submit");
+                    sendScore.putExtra("CurrentScore", totalCorrect);
+                    startActivity(sendScore);
                     configureNextButton();
                 }
 
@@ -127,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
         RadioButton choice2 = findViewById(R.id.choice2);
         RadioButton choice3 = findViewById(R.id.choice3);
         RadioButton choice4 = findViewById(R.id.choice4);
-        TextView test = findViewById(R.id.test);    // test text
 
         choice1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,8 +168,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-        test.setText("Number Correct: " + totalCorrect);
 
     }
 
