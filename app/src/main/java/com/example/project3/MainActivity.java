@@ -2,19 +2,16 @@ package com.example.project3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     int questionCount = 1;
-    int totalCorrect = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,30 +19,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button next = findViewById(R.id.nextQuestion);
-        RadioGroup choices = findViewById(R.id.choices);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 questionCount++;
 
-                checkAnswer();  // Checks if the selected answer is correct
-
                 TextView questionNumber = findViewById(R.id.questionNumber);
                 questionNumber.setText("Question " + questionCount);
 
-                updateQuestion();
-                choices.clearCheck();
-
                 if(questionCount == 10){
                     next.setText("Submit");
-                    configureNextButton();
                 }
-
+                updateQuestion();
 
             }
         });
-
     }
 
     private void updateQuestion(){
@@ -106,78 +95,15 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(questionCount == 9){
             question.setImageDrawable(getDrawable(R.drawable.project_3_quiz_q9));
-            choice1.setText("y = x^4 + 8x^2 - 12");
-            choice2.setText("y = x^4 - 8x^2 + 10");
-            choice3.setText("y = x^4 - 8x^2 + 12"); // Correct Answer
-            choice4.setText("y = x^4 - 8x^2 - 20");
+            choice1.setText("");
+            choice2.setText("");
+            choice3.setText("");
+            choice4.setText("");
         }
         else if(questionCount == 10){
             question.setImageDrawable(getDrawable(R.drawable.project_3_quiz_q10));
-            choice1.setText("x = -2");   // Correct Answer
-            choice2.setText("x = -2, 2");
-            choice3.setText("x = 2");
-            choice4.setText("None");
         }
 
-    }
-
-    // Find a way to make sure user can only increase score by 1
-    private void checkAnswer(){
-        RadioButton choice1 = findViewById(R.id.choice1);
-        RadioButton choice2 = findViewById(R.id.choice2);
-        RadioButton choice3 = findViewById(R.id.choice3);
-        RadioButton choice4 = findViewById(R.id.choice4);
-        TextView test = findViewById(R.id.test);    // test text
-
-        choice1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(questionCount == 6 || questionCount == 7 || questionCount == 10){
-                    totalCorrect++;
-                }
-            }
-        });
-
-        choice2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(questionCount == 2 || questionCount == 4 || questionCount == 5){
-                    totalCorrect++;
-                }
-            }
-        });
-
-        choice3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(questionCount == 1 || questionCount == 9){
-                    totalCorrect++;
-                }
-            }
-        });
-
-        choice4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(questionCount == 3 || questionCount == 8){
-                    totalCorrect++;
-                }
-            }
-        });
-
-        test.setText("Number Correct: " + totalCorrect);
-
-    }
-
-    private void configureNextButton(){
-        Button nextButton = findViewById(R.id.nextQuestion);
-
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, Finish.class));
-            }
-        });
     }
 
 }
