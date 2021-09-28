@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
+    <TextView
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Number Correct: " />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,11 +37,12 @@
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
-                tools:srcCompat="@drawable/project_3_quiz_q1" />
+                tools:srcCompat="@tools:sample/avatars" />
 
             <RadioGroup
+                android:id="@+id/choices"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" >
+                android:layout_height="200dp">
 
                 <RadioButton
                     android:id="@+id/choice1"

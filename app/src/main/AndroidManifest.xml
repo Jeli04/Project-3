@@ -9,11 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project3">
-
-        <activity android:name=".Introduction"
-            android:label="start">
-        </activity>
-
+        <activity android:name=".Finish"></activity>
+        <activity
+            android:name=".Introduction"
+            android:label="start"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -23,8 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
     </application>
 
 </manifest>
