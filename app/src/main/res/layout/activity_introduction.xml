@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/math_background"
     android:orientation="vertical">
 
     <TextView
@@ -21,6 +22,7 @@
         android:layout_width="100dp"
         android:layout_height="75dp"
         android:layout_gravity="center"
-        android:text="Start"/>
+        android:backgroundTint="#01A14D"
+        android:text="Start" />
 
 </FrameLayout>

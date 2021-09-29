@@ -18,17 +18,6 @@ public class Introduction extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                configureNextButton();
-            }
-        });
-    }
-
-    private void configureNextButton(){
-        Button nextButton = findViewById(R.id.start);
-
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 startActivity(new Intent(Introduction.this, MainActivity.class));
             }
         });

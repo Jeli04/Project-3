@@ -14,45 +14,40 @@ public class Finish extends AppCompatActivity {
     int highScore = 0;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
         setContentView(R.layout.activity_finish2);
+
+        // Supposed to maintain high score but not working
+        if (bundle!= null){
+            highScore = bundle.getInt("highscore");
+        }
 
         Intent mainActivity = getIntent();
         int currentScore = mainActivity.getIntExtra("CurrentScore", 0);
         TextView yourScore = findViewById(R.id.yourScore);
         yourScore.setText("Your Score: " + currentScore*10 + "%");
 
+        TextView displayHighScore = findViewById(R.id.highScore);
+
         if(currentScore > highScore){
             highScore = currentScore;
+            displayHighScore.setText("High Score: " + highScore*10 + "%");
         }
-        TextView displayHighScore = findViewById(R.id.highScore);
-        displayHighScore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                displayHighScore.setText("High Score: " + highScore*10 + "%");
-            }
-        });
 
         Button restart = findViewById(R.id.restart);
         restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                configureNextButton();
-            }
-        });
-
-    }
-
-    private void configureNextButton(){
-        Button nextButton = findViewById(R.id.nextQuestion);
-
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                //configureNextButton();
                 startActivity(new Intent(Finish.this, MainActivity.class));
             }
         });
+
     }
 
+    protected void onSaveInstanceState(Bundle bundle) {
+        super.onSaveInstanceState(bundle);
+        bundle.putInt("highscore", highScore);
+    }
 }

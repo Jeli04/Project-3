@@ -11,6 +11,7 @@
         android:theme="@style/Theme.Project3">
         <activity
             android:name=".Introduction"
+            android:launchMode = "singleTop"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Finish"></activity>
+        <activity android:name=".MainActivity"
+            android:launchMode = "singleTop"/>
+        <activity android:name=".Finish"
+            android:launchMode = "singleTop"/>
     </application>
 
 </manifest>

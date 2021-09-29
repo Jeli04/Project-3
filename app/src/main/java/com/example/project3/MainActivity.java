@@ -39,14 +39,10 @@ public class MainActivity extends AppCompatActivity {
                 choices.clearCheck();
                 currentScore.setText("Current Score: " + totalCorrect*10 + "%");
 
-                Intent sendScore = new Intent(getApplicationContext(), Finish.class);
                 if(questionCount == 10){
                     next.setText("Submit");
-                    sendScore.putExtra("CurrentScore", totalCorrect);
-                    startActivity(sendScore);
                     configureNextButton();
                 }
-
 
             }
         });
@@ -178,6 +174,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, Finish.class));
+
+                Intent sendScore = new Intent(getApplicationContext(), Finish.class);
+                sendScore.putExtra("CurrentScore", totalCorrect);
+                startActivity(sendScore);
+
             }
         });
     }

@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/math_background"
     tools:context=".MainActivity" >
 
     <TextView
         android:id="@+id/currentScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="125dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="50dp"
         android:textStyle="bold"
         android:textSize="20dp"
         android:text="Current Score: 0%" />
@@ -41,12 +42,13 @@
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/project_3_quiz_q1" />
 
             <RadioGroup
                 android:id="@+id/choices"
-                android:layout_width="match_parent"
-                android:layout_height="200dp">
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal">
 
                 <RadioButton
                     android:id="@+id/choice1"
@@ -78,6 +80,7 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
+                android:backgroundTint="#01A14D"
                 android:text="Next" />
         </LinearLayout>
 

@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/math_background"
     tools:context=".Finish">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_marginTop="100dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <TextView
@@ -28,11 +30,11 @@
 
             <TextView
                 android:id="@+id/yourScore"
-                android:layout_width="200dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:textStyle="bold"
-                android:text="Your Score: " />
+                android:text="Your Score: 0%" />
 
             <TextView
                 android:id="@+id/highScore"
@@ -40,13 +42,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textStyle="bold"
-                android:text="High Score: " />
+                android:text="High Score: 0%" />
         </LinearLayout>
 
         <Button
             android:id="@+id/restart"
             android:layout_width="110dp"
             android:layout_height="50dp"
+            android:backgroundTint="#01A14D"
             android:text="Restart" />
     </LinearLayout>
 </FrameLayout>
