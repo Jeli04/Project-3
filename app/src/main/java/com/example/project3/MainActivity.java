@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     int questionCount = 1;
     int totalCorrect = 0;
+    int currrentHighScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
                 checkAnswer();  // Checks if the selected answer is correct
 
-                TextView questionNumber = findViewById(R.id.questionNumber);
-                questionNumber.setText("Question " + questionCount);
-
                 updateQuestion();
-                choices.clearCheck();
+                choices.clearCheck();   // Clears the previous answers
                 currentScore.setText("Current Score: " + totalCorrect*10 + "%");
 
+                // Special case for question 10
                 if(questionCount == 10){
                     next.setText("Submit");
                     configureNextButton();
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Updates the answer choices of each question
     private void updateQuestion(){
         ImageView question = findViewById(R.id.question);
         RadioButton choice1 = findViewById(R.id.choice1);
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(questionCount == 10){
             question.setImageDrawable(getDrawable(R.drawable.project_3_quiz_q10));
-            choice1.setText("x = -2");   // Correct Answer
+            choice1.setText("x = -2"); // Correct Answer
             choice2.setText("x = -2, 2");
             choice3.setText("x = 2");
             choice4.setText("None");
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // Find a way to make sure user can only increase score by 1
+    // Tracks how many answers were correct
     private void checkAnswer(){
         RadioButton choice1 = findViewById(R.id.choice1);
         RadioButton choice2 = findViewById(R.id.choice2);
@@ -167,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Prepares to switch to the next activity
     private void configureNextButton(){
         Button nextButton = findViewById(R.id.nextQuestion);
 
@@ -175,8 +177,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, Finish.class));
 
+                Intent sendHighScore = getIntent();
+                currrentHighScore = sendHighScore.getIntExtra("CurrentHighScore", 0); // Gets the high score value
+
                 Intent sendScore = new Intent(getApplicationContext(), Finish.class);
                 sendScore.putExtra("CurrentScore", totalCorrect);
+                sendScore.putExtra("SendCurrentHighScore", currrentHighScore);  // Send the current high score
                 startActivity(sendScore);
 
             }

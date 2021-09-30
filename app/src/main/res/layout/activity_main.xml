@@ -7,27 +7,27 @@
     android:background="@drawable/math_background"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:id="@+id/currentScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="50dp"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:text="Current Score: 0%" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/currentScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Current Score: 0%"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="550dp"
             android:orientation="vertical">
 
+            <!--
             <TextView
                 android:id="@+id/questionNumber"
                 android:layout_width="match_parent"
@@ -36,12 +36,13 @@
                 android:textSize="35dp"
                 android:textStyle="bold"
                 android:text="Question 1" />
-
+            -->
             <ImageView
                 android:id="@+id/question"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
                 android:layout_gravity="center"
+                android:src="@drawable/project_3_quiz_q1"
                 tools:srcCompat="@drawable/project_3_quiz_q1" />
 
             <RadioGroup
