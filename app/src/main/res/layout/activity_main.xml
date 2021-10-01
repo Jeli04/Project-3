@@ -17,7 +17,7 @@
             android:id="@+id/currentScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:text="Current Score: 0%"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -43,7 +43,7 @@
                 android:layout_height="250dp"
                 android:layout_gravity="center"
                 android:src="@drawable/project_3_quiz_q1"
-                tools:srcCompat="@drawable/project_3_quiz_q1" />
+                tools:srcCompat="@drawable/project_3_quiz_q3" />
 
             <RadioGroup
                 android:id="@+id/choices"
